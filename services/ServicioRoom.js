@@ -19,7 +19,7 @@ export class ServicioRoom{
         return await habitacionNueva.save()
     }
     async eliminar(id){
-        return await modeloHabitacion.findByIdAndDelete(id,datos) 
+        return await modeloHabitacion.findByIdAndDelete(id) 
     }
 
 }

@@ -1,4 +1,4 @@
-//import {modeloReserva} from '.../models/modeloReserva.js'
+import {modeloReserva} from '../models/modeloreserva.js'
 export class ServicioReserva{
 
     constructor(){}
@@ -19,7 +19,7 @@ export class ServicioReserva{
         return await reservaNueva.save()
     }
     async eliminar(id){
-        return await modeloReserva.findByIdAndDelete(id,datos)
+        return await modeloReserva.findByIdAndDelete(id)
     }
 
 }

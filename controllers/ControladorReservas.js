@@ -45,7 +45,7 @@ export class ControladorReservas {
         try { 
             let servicioReserva = new ServicioReserva()
             //1. hay que recibir datos(si)
-            let id=request.params
+            let id=request.params.id
             let datosModificar=request.body
             //2. modificar en BD
             //3. enviar respuesta
@@ -70,12 +70,17 @@ export class ControladorReservas {
         try { let servicioReserva = new ServicioReserva()
             //1. hay que recibir datos(si)
             let datosRegistrar=request.body
+            let fechainicial=new Date(datosRegistrar.fechainicial)
+            let fechafinal=new Date(datosRegistrar.fechafinal)
+            let diashospedaje=(Math.floor(fechafinal-fechainicial)/(1000*60*24*60))
             //2. guardar en BD
             //3. enviar respuesta
+            await servicioReserva.registrar(datosRegistrar),
             response.status(200).json({
                 "estado":true,
                 "mensaje":"Exito registrando las reservas",
-                "datos":await servicioReserva.registrar(datosRegistrar)
+                "datos":datosRegistrar,
+                "diashospedaje":diashospedaje,
             })
             
         } catch (error) {

@@ -12,15 +12,15 @@ const Reserva=new Schema({
         required:true
     },
     telefono:{
-        type:number,
+        type:Number,
         required:true
     },
     fechainicio:{
-        type:Number,
+        type:Date,
         required:true
     },
     fechafinal:{
-        type:Number,
+        type:Date,
         required:true
     },
     numerodepersonas:{

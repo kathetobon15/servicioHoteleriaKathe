@@ -47,14 +47,14 @@ export class ControladorHabitacion {
         try {
             let servicioHabitacion = new ServicioRoom()
             //1. hay que recibir datos(si)
-            let id=request.params
+            let id=request.params.id
             let datosModificar=request.body
             //2. modificar en BD
             //3. enviar respuesta
             await servicioHabitacion.modificar(id,datosModificar)
             response.status(200).json({
                 "mensaje":"Exito modificando las habitaciones",
-                "datos":null
+                "datos":datosModificar
             })
             
 
@@ -97,13 +97,14 @@ export class ControladorHabitacion {
             let servicioHabitacion = new ServicioRoom()
             //1. hay que recibir datos(si)
             let id=request.params.id
+            let datos=request.body
             //2. eliminelo
             //3. mande respuesta
-            await servicioHabitacion.eliminar(datosEliminar)
+            await servicioHabitacion.eliminar(id)
             response.status(200).json({
                 "estado":true,
                 "mensaje":"Exito eliminando la habitaciones",
-                "datos":null
+                "datos":datos
             })
             
         } catch (error) {
